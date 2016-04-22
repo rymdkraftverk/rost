@@ -16,10 +16,8 @@ export default class App extends Component{
       height: 1000
     }
     return(
-      <div>
-        <Header />
-        <Devices />
-        <Commands />
+      <div style={style}>
+        <RostWrapper/>
       </div>
     )
   }
