@@ -12,18 +12,48 @@ export default class Command extends Component {
       fontSize: "18px",
       display: "flex",
       justifyContent: "space-between",
-      padding: "10px",
       borderRadius: "4px",
+      padding: "10px",
       marginTop: "10px"
     };
+    var optionsStyle = {
+      display: "flex",
+      justifyContent: "space-between"
+    };
+    var command = {
+      padding: "5px"
+    }
+    var option = {
+      background: "#f0c29c",
+      color: "#fff",
+      width: "20px",
+      textAlign: "center",
+      padding: "5px",
+      borderRadius: "4px",
+      marginLeft: "10px"
+    }
+    var optionsIcon = {
+      marginLeft: "10px"
+    }
     return (
       <div style={style}>
-        <div>
+        <div style={command}>
           Command
         </div>
-        <div>
-          hello
-        </div>
+        <div style={optionsStyle}>
+          <div style={option}>
+            X
+          </div>
+          <div style={option}>
+            X
+          </div>
+          <div style={option}>
+            X
+          </div>
+          <div style={optionsIcon}>
+            <img src="#" />
+          </div>
+        </div> 
       </div>
     )
   }
