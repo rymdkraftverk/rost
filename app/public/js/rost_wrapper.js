@@ -14,6 +14,7 @@ export default class RostWrapper extends Component {
       margin: "50px auto",
       width: 1000,
       borderRadius: "4px",
+      overflow: "hidden",
       display: "flex"
     }
     return(

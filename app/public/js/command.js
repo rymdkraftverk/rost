@@ -28,6 +28,7 @@ export default class Command extends Component {
       background: "#f0c29c",
       color: "#fff",
       textAlign: "center",
+      lineHeight: "10px",
       padding: "5px",
       borderRadius: "4px",
       marginLeft: "10px"

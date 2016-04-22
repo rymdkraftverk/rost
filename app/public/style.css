@@ -1,5 +1,7 @@
 body {
 	background: #ebf2f4;
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 400;
 }
 ul li {
 	display: inline-block;
