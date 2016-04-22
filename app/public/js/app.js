@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 import Device from './device';
 import Header from './header';
+import Devices from './devices';
 
 export default class App extends Component{
   constructor(){
@@ -10,8 +11,8 @@ export default class App extends Component{
   render(){
     return(
       <div>
-        <Device />
         <Header />
+        <Devices />
       </div>
     )
   }
