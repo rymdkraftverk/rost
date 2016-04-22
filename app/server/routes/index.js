@@ -1,4 +1,5 @@
 module.exports = {
 	command: require('./command'),
-	device: require('./device')
+	device: require('./device'),
+	voice: require('./voice')
 }

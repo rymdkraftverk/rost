@@ -8,6 +8,7 @@ const routes = require('./routes')
 const apiRouter = express.Router()
 apiRouter.use('/command', routes.command)
 apiRouter.use('/device', routes.device)
+apiRouter.use('/voice', routes.voice)
 server.use('/api', apiRouter)
 
 const publicPath = path.join(__dirname, '../public')
