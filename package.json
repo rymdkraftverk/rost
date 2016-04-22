@@ -1,0 +1,15 @@
+{
+  "name": "rost",
+  "main": "app/index.js",
+  "scripts": {
+    "start": "node .",
+    "test": "node test",
+    "debug": "node --debug-brk ."
+  },
+  "dependencies": {
+    "body-parser": "^1.15.0",
+    "cfenv": "^1.0.3",
+    "express": "^4.13.4",
+    "nano": "^6.2.0"
+  }
+}
