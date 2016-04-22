@@ -5,7 +5,8 @@ const all = () => {
 	return new Promise((resolve, reject) => {
 		db.view('default', 'all_devices', (err, body) => {
 			if(err) return reject(err)
-			return resolve(body.rows)
+			const items = body.rows.map(item => item.value)
+			return resolve(items)
 		})
 	})
 }
