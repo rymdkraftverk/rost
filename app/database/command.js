@@ -1,19 +1,32 @@
 const db = require('./').db
 const TYPE = 'command'
 
-const all = () => {
+const addSignals = (commandId, signals) => {
 	return new Promise((resolve, reject) => {
-		db.view('default', 'all_commands', (err, body) => {
+		db.get(commandId, (err, body) => {
 			if(err) return reject(err)
-			return resolve(body.rows)
+
+			const currentSignals = body.signals
+			body.signals = currentSignals.concat(signals)
+			return resolve(upsert(body))
 		})
 	})
 }
 
-const upsert = command => {
-	command.type = TYPE
+const all = () => {
 	return new Promise((resolve, reject) => {
-		db.insert(command, (err, body) => {
+		db.view('default', 'all_commands', (err, body) => {
+			if(err) return reject(err)
+			const items = body.rows.map(item => item.value)
+			return resolve(items)
+		})
+	})
+}
+
+const upsert = item => {
+	item.type = TYPE
+	return new Promise((resolve, reject) => {
+		db.insert(item, (err, body) => {
 			if(err) return reject(err)
 			return resolve(body)
 		})
@@ -22,5 +35,6 @@ const upsert = command => {
 
 module.exports = {
 	upsert,
-	all
+	all,
+	addSignals
 }

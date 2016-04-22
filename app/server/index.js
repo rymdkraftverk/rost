@@ -7,7 +7,7 @@ server.use(bodyParser.json())
 const routes = require('./routes')
 const apiRouter = express.Router()
 apiRouter.use('/command', routes.command)
-apiRouter.use('/signal', routes.signal)
+apiRouter.use('/device', routes.device)
 server.use('/api', apiRouter)
 
 const publicPath = path.join(__dirname, '../public')
