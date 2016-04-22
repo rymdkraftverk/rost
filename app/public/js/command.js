@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import Signal from './signal.js';
 
 export default class Command extends Component {
   constructor(props){
@@ -47,9 +48,7 @@ export default class Command extends Component {
         <div style={optionsStyle}>
           {
             this.props.signals && this.props.signals.map((signal)=>{
-              return <div key={signal.id} style={option}>
-                <img src="../images/light-on.png" width="24" height="22"/>
-              </div>
+              return <Signal key={signal.id} />
             })
           }
           <div style={optionsIcon}>
