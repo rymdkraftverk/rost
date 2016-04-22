@@ -10,7 +10,6 @@ export default class App extends Component{
   }
   render(){
     var style={
-      background: "lightblue",
       height: 1000
     }
     return(

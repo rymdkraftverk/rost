@@ -8,6 +8,7 @@ export default class Header extends React.Component {
 		var style = {
 			background: "#e9a065",
 			display: "flexbox",
+			overflow: "hidden",
 			justifyContent: "space-between"
 		};
 		return (

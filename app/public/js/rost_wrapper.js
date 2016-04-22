@@ -9,12 +9,10 @@ export default class RostWrapper extends Component {
   }
 
   render(){
-    var style={
+    var style = {
       background: "white",
+      margin: "50px auto",
       width: 1000,
-      position: "relative",
-      left: 100,
-      top: 50,
       borderRadius: "4px",
       display: "flex"
     }
