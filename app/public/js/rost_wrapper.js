@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
-import Header from './header';
 import Devices from './devices';
+import Commands from './commands';
+import Header from './header';
 
 export default class RostWrapper extends Component {
   constructor(props){
@@ -14,11 +15,16 @@ export default class RostWrapper extends Component {
       position: "relative",
       left: 100,
       top: 50,
-      borderRadius: "4px"
+      borderRadius: "4px",
+      display: "flex"
     }
     return(
       <div style={style}>
         <Devices />
+        <div style={{width: "100%"}}>
+          <Header />
+          <Commands />
+        </div>
       </div>
     )
   }

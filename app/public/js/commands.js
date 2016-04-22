@@ -8,7 +8,7 @@ export default class Commands extends Component {
 
   render(){
     return(
-      <div>
+      <div style={{width: "100%"}}>
         <Command />
       </div>
     )

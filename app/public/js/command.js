@@ -14,7 +14,8 @@ export default class Command extends Component {
       justifyContent: "space-between",
       borderRadius: "4px",
       padding: "10px",
-      marginTop: "10px"
+      margin: "10px",
+
     };
     var optionsStyle = {
       display: "flex",
@@ -53,7 +54,7 @@ export default class Command extends Component {
           <div style={optionsIcon}>
             <img src="#" />
           </div>
-        </div> 
+        </div>
       </div>
     )
   }
