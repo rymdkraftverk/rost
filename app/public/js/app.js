@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import Device from './device';
 import Header from './header';
 import Devices from './devices';
+import Commands from './commands';
 
 export default class App extends Component{
   constructor(){
@@ -13,6 +14,7 @@ export default class App extends Component{
       <div>
         <Header />
         <Devices />
+        <Commands />
       </div>
     )
   }

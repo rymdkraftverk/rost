@@ -1,14 +1,15 @@
 import React, {Component} from 'react';
+import Command from './command';
 
-export default class Commands from Component {
+export default class Commands extends Component {
   constructor(props){
     super(props);
   }
 
   render(){
-    render(
+    return(
       <div>
-        Commands
+        <Command />
       </div>
     )
   }
