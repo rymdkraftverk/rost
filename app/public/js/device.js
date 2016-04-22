@@ -11,7 +11,6 @@ export default class Device extends Component {
       ]
     }
   }
-
   render(){
     var style = {
       display: "flex",

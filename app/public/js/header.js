@@ -6,12 +6,13 @@ export default class Header extends React.Component {
 	}
 	render(){
 		var style = {
-
+			background: "#e9a065",
+			display: "flexbox",
+			justifyContent: "space-between"
 		};
 		return (
-			<div>
-				<img src="#">
-				
+			<div style={style}>
+				<img src="#" />
 			</div>
 		)
 	}

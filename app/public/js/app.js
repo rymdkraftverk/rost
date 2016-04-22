@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 import Device from './device';
+import Header from './header';
 
 export default class App extends Component{
   constructor(){
@@ -10,6 +11,7 @@ export default class App extends Component{
     return(
       <div>
         <Device />
+        <Header />
       </div>
     )
   }
