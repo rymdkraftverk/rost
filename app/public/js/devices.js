@@ -1,10 +1,24 @@
 import React, {Component} from 'react';
-import devices from '../devices.json';
 import Device from './device';
+import fetch from 'isomorphic-fetch'
 
 export default class Devices extends Component {
   constructor(props){
     super(props);
+    this.state = {
+      devices: []
+    }
+  }
+
+  componentDidMount(){
+    fetch('api/device')
+    .then((response)=>{
+      return response.json()
+    })
+    .then((json)=>{
+      this.setState({devices: json})
+      console.log(this.state.devices);
+    })
   }
 
   render(){
@@ -16,8 +30,8 @@ export default class Devices extends Component {
     }
     return(
       <div style={style}>
-      { devices.devices.map((device)=>{
-        return <Device key={device.name} name={device.name} />
+      { this.state.devices.map((device)=>{
+        return <Device signals={device.signals} key={device.name} name={device.name} />
       })}
       </div>
     )

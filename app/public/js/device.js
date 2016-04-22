@@ -20,6 +20,12 @@ export default class Device extends Component {
     return(
       <div style={style}>
         <p style={header}>{this.props.name}</p>
+        {
+          this.props.signals.map((signal)=>{
+            return <p key={signal.id}>{signal.id}</p>
+          })
+        }
+
       </div>
     )
   }
