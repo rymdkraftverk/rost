@@ -36,18 +36,22 @@ export default class Command extends Component {
     var optionsIcon = {
       marginLeft: "10px"
     }
+
+    console.log(this.props);
+
     return (
       <div style={style}>
         <div style={command}>
-          Command
+          {this.props.command}
         </div>
         <div style={optionsStyle}>
-          <div style={option}>
-            <img src="../images/light-on.png" width="24" height="22"/>
-          </div>
-          <div style={option}>
-            <img src="../images/light-on.png" width="24" height="22"/>
-          </div>
+          {
+            this.props.signals && this.props.signals.map((signal)=>{
+              return <div key={signal.id} style={option}>
+                <img src="../images/light-on.png" width="24" height="22"/>
+              </div>
+            })
+          }
           <div style={optionsIcon}>
             <img src="#" />
           </div>

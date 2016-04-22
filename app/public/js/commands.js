@@ -24,7 +24,11 @@ export default class Commands extends Component {
   render(){
     return(
       <div style={{width: "100%"}}>
-        <Command />
+      {
+        this.state.commands.map((command)=>{
+          return <Command key={command.command} signals={command.signals} command={command.command}/>
+        })
+      }
       </div>
     )
   }
