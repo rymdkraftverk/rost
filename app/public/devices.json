@@ -1,0 +1,7 @@
+{
+  "devices": [
+    {"name": "Beer Tap"},
+    {"name": "Light"},
+    {"name": "Coffee Maker"}
+  ]
+}
