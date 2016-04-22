@@ -5,15 +5,21 @@ export default class Device extends Component {
     super(props);
   }
   render(){
-    // var style = {
-    //   display: "flex",
-    //   width: 400,
-    //   justifyContent: "space-between",
-    //   background: "yellow"
-    // };
+    var style = {
+      width: 300,
+      height: 120,
+      background: "lightblue",
+      color: "blue",
+      margin: "10px",
+      borderRadius: "4px"
+    };
+
+    var header = {
+      padding: "10px"
+    }
     return(
-      <div>
-        <p>{this.props.name}</p>
+      <div style={style}>
+        <p style={header}>{this.props.name}</p>
       </div>
     )
   }
