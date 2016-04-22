@@ -13,4 +13,14 @@ router.post('/', (req, res) => {
 	})
 })
 
+router.get('/', (req, res) => {
+	commandDb.all()
+	.then(result => {
+		res.json(result)
+	})
+	.catch(err => {
+		res.status(400).json(err)
+	})
+})
+
 module.exports = router
