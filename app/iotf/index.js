@@ -9,10 +9,11 @@ if(!creds)
 
 const options = {
 	'org': creds.org,
-	'id': 'rost' + appEnv.isLocal ? '-local': '',
+	'id': 'rost' + (appEnv.isLocal ? '-local': ''),
 	'auth-key': creds.apiKey,
 	'auth-token': creds.apiToken
 }
+
 const client = new iotf.IotfApplication(options)
 client.connect()
 
