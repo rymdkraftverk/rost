@@ -63,8 +63,8 @@ export default class AddCommand extends Component {
 			<div onClick={this.addNewCommand} onDrop={this.drop.bind(this)} onDragOver={this.allowDrop}>
 				{
 					this.state.addMode?<div className="addCommand">+</div>:
-					<div className="addCommand" style={{background: "white", "pointer": "none"}}>
-						<img style={{"marginTop": "7px"}} src="../images/trash.png" width="34" height="32"/>
+					<div className="deleteSignal">
+						<img style={{"marginTop": "7px"}} src="../images/trash-white.png" width="20" height="19"/>
 					</div>
 				}
 
