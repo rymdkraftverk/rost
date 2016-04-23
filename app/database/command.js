@@ -34,6 +34,19 @@ const list = mode => {
 	})
 }
 
+const removeSignal = (commandId, signalId) => {
+	return new Promise((resolve, reject) => {
+		db.get(commandId, (err, body) => {
+			if(err) return reject(err)
+			const current = body.signals
+			const keep = current
+			.filter(item => item.id !== signalId)
+			body.signals = keep
+			return resolve(upsert(body))
+		})
+	})
+}
+
 const upsert = item => {
 	item.type = TYPE
 	return new Promise((resolve, reject) => {
@@ -48,5 +61,6 @@ module.exports = {
 	upsert,
 	all,
 	addSignals,
-	list
+	list,
+	removeSignal
 }

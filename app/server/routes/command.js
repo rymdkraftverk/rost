@@ -19,6 +19,18 @@ router.post('/', (req, res) => {
 	})
 })
 
+router.delete('/:id/:signalId', (req, res) => {
+	const commandId = req.params.id
+	const signalId = req.params.signalId
+	commandDb.removeSignal(commandId, signalId)
+	.then(result => {
+		res.json(result)
+	})
+	.catch(err => {
+		res.status(400).json(err)
+	})
+})
+
 router.put('/:id', (req, res) => {
 	const id = req.params.id
 	const signals = req.body
