@@ -54,6 +54,23 @@ export default class Command extends Component {
     })
   }
 
+  onKeyPress(event){
+    var charCode = (typeof event.which == "number") ? event.which : event.keyCode;
+    console.log(charCode)
+    var ENTER = 13;
+    if( charCode == ENTER ) {
+      this.updateCommand();
+    }
+  }
+
+  updateCommand(){
+    console.log("update command");
+    // fetch()
+    // .then((repsonse)=>{
+    //
+    // })
+  }
+
   render(){
     var style = {
       background: "#f7ece3",
@@ -80,9 +97,8 @@ export default class Command extends Component {
 
     return (
       <div style={style} onDrop={this.drop.bind(this)} onDragOver={this.allowDrop}>
-        <div style={command}>
-          {this.props.command}
-        </div>
+        <input style={command} defaultValue={this.props.command} onKeyPress={this.onKeyPress.bind(this)}/>
+
         <div style={optionsStyle}>
           {
             this.state.signals && this.state.signals.map((signal)=>{
