@@ -139,6 +139,7 @@ export default class Command extends Component {
     var command = {
       padding: "5px",
       background: "#f7ece3",
+      textTransform: "capitalize",
       color: "#d9823c",
       fontSize: "18px",
       border: "none"
@@ -156,7 +157,7 @@ export default class Command extends Component {
       'enabled': this.state.checked
     })
     return (
-        <div className="test" style={style} onDrop={this.drop.bind(this)} onDragOver={this.allowDrop}>
+        <div style={style} onDrop={this.drop.bind(this)} onDragOver={this.allowDrop}>
           <input style={command} defaultValue={this.props.command} onKeyPress={this.onKeyPress.bind(this)}/>
 
           <div style={optionsStyle}>
