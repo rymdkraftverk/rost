@@ -3,16 +3,19 @@ const appEnv = cfenv.getAppEnv()
 const creds = appEnv.getServiceCreds('iotf-rost')
 const iotf = require('ibmiotf')
 const config = require('../config')
+const randomWords = require('random-words')
 
 if(!creds)
 	throw new Error('iotf credentials not found')
 
 const options = {
 	'org': creds.org,
-	'id': 'rost' + (appEnv.isLocal ? '-local': ''),
+	'id': 'rost-' + randomWords(),
 	'auth-key': creds.apiKey,
 	'auth-token': creds.apiToken
 }
+
+console.log('cliend id:', options.id)
 
 const client = new iotf.IotfApplication(options)
 client.connect()
