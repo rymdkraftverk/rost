@@ -57,7 +57,7 @@ const getSignature = command => {
 	const options = {
 		method: 'POST',
 		uri: config.grasp.host + '/api/format_command',
-		body: { text: command },
+		body: { text: command.command },
 		json: true
 	}
 	return request(options)

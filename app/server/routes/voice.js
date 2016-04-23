@@ -3,10 +3,11 @@ const router = express.Router()
 const commandDb = require('../../database/command')
 const request = require('request-promise')
 const iotf = require('../../iotf')
+const config = require('../../config')
 
 router.post('/', (req, res) => {
 	const voice = req.body.voice
-	const fuzzy = matchingFuzzy(voice)
+	const fuzzy = matchingFuzzyMock(voice)
 	const strict = matchingStrict(voice)
 
 	Promise.all([fuzzy, strict])
@@ -23,10 +24,14 @@ router.post('/', (req, res) => {
 	})
 })
 
+const matchingFuzzyMock = () => {
+	return Promise.resolve([])
+}
+
 const matchingFuzzy = voice => {
 	const options = {
 		method: 'GET',
-		uri: 'http://localhost:6034/api/command', //TODO
+		uri: config.grasp.host + '/api/format_command',
 		body: { voice },
 		json: true
 	}
