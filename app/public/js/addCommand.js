@@ -31,9 +31,17 @@ export default class AddCommand extends Component {
 
 	addNewCommand(){
 		console.log("add new command");
-		// fetch('/api/command', {
-		// 	method: 'post'
-		// })
+		fetch('/api/command', {
+			method: 'post',
+			headers: new Headers({
+				'Content-Type': 'application/json'
+			}),
+			body: JSON.stringify({
+				"command": "New Command",
+				"mode": "strict",
+				"signals": []
+			})
+		})
 	}
 
 	render(){
