@@ -98,7 +98,7 @@ export default class Command extends Component {
             })
           }
           <div style={optionsIcon}>
-            <img src="../images/settings.png" width="24" height="22"/>
+            <img src="../images/trash.png" width="24" height="22"/>
           </div>
         </div>
       </div>
