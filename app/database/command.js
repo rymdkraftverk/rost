@@ -35,7 +35,6 @@ const list = mode => {
 	})
 }
 
-const removeSignal = (commandId, signalId) => {
 const del = (id, rev) => {
 	return new Promise((resolve, reject) => {
 		db.destroy(id, rev, (err, body) => {
@@ -45,12 +44,16 @@ const del = (id, rev) => {
 	})
 }
 
+const removeSignal = (commandId, deviceId, signalId) => {
 	return new Promise((resolve, reject) => {
 		db.get(commandId, (err, body) => {
 			if(err) return reject(err)
 			const current = body.signals
 			const keep = current
-			.filter(item => item.id !== signalId)
+			.filter(item => {
+				return item.id !== signalId &&
+				item.device !== deviceId
+			})
 			body.signals = keep
 			return resolve(upsert(body))
 		})

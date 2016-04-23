@@ -19,7 +19,6 @@ router.post('/', (req, res) => {
 	})
 })
 
-router.delete('/:id/:signalId', (req, res) => {
 router.delete('/:id/:rev', (req, res) => {
 	const id = req.params.id
 	const rev = req.params.rev
@@ -32,9 +31,11 @@ router.delete('/:id/:rev', (req, res) => {
 	})
 })
 
+router.delete('/:id/:deviceId/:signalId', (req, res) => {
 	const commandId = req.params.id
 	const signalId = req.params.signalId
-	commandDb.removeSignal(commandId, signalId)
+	const deviceId = req.params.deviceId
+	commandDb.removeSignal(commandId, deviceId, signalId)
 	.then(result => {
 		res.json(result)
 	})
@@ -43,7 +44,7 @@ router.delete('/:id/:rev', (req, res) => {
 	})
 })
 
-router.put('/:id', (req, res) => {
+router.put('/:id/signal', (req, res) => {
 	const id = req.params.id
 	const signals = req.body
 	commandDb.addSignals(id, signals)
