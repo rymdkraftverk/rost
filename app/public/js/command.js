@@ -122,10 +122,12 @@ export default class Command extends Component {
               key={signal.device + signal.id} />
             })
           }
-          <div onClick={this.deleteCommand} style={optionsIcon}>
+     
+          <div className="toggle"><input id="cmn-toggle-4" className="cmn-toggle cmn-toggle-round-flat" type="checkbox" />
+          <label htmlFor="cmn-toggle-4" data-tip="test" className="block"></label></div>
+          <div style={optionsIcon} onClick={this.deleteCommand}>
             <img src="../images/trash.png" width="24" height="22"/>
           </div>
-        </div>
       </div>
     )
   }
