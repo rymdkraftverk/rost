@@ -26,11 +26,13 @@ export default class Signal extends Component{
       borderRadius: "4px",
       marginLeft: "10px"
     }
+    var imageLocation = "../images/" + this.props.imageName + ".png";
+    var imageDescription = this.props.description;
 
     return(
       <div style={option} draggable="true" onDragStart={this.drag.bind(this)}>
       <ReactTooltip />
-        <img src="../images/large-glass.png" data-tip="hello world" draggable="false" width="24" height="22"/>
+        <img src={imageLocation} data-tip={imageDescription} draggable="false" width="24" height="22"/>
       </div>
     )
   }
