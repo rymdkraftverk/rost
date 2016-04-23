@@ -121,24 +121,24 @@ export default class Command extends Component {
     }
     var id = "cmn-toggle-" + this.props.id;
     return (
-      <div style={style} onDrop={this.drop.bind(this)} onDragOver={this.allowDrop}>
-        <input style={command} defaultValue={this.props.command} onKeyPress={this.onKeyPress.bind(this)}/>
+        <div className="test" style={style} onDrop={this.drop.bind(this)} onDragOver={this.allowDrop}>
+          <input style={command} defaultValue={this.props.command} onKeyPress={this.onKeyPress.bind(this)}/>
 
-        <div style={optionsStyle}>
-          {
-            this.state.signals && this.state.signals.map((signal)=>{
-              return <Signal
-              device={signal.device}
-              commandId={this.props.id}
-              imageName={signal.imageName}
-              description={signal.description}
-              command={this.props.command}
-              copyable={false}
-              id={signal.id}
-              key={signal.device + signal.id} />
-            })
-          }
-
+          <div style={optionsStyle}>
+            {
+              this.state.signals && this.state.signals.map((signal)=>{
+                return <Signal
+                device={signal.device}
+                commandId={this.props.id}
+                imageName={signal.imageName}
+                description={signal.description}
+                command={this.props.command}
+                copyable={false}
+                id={signal.id}
+                key={signal.device + signal.id} />
+              })
+            }
+            
           <div className="toggle">
 
             <input id={id} className="cmn-toggle cmn-toggle-round-flat" type="checkbox" />
@@ -148,7 +148,6 @@ export default class Command extends Component {
               <img src="../images/trash.png" width="24" height="22"/>
           </div>
         </div>
-      </div>
     )
   }
 }
