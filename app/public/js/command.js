@@ -16,23 +16,29 @@ export default class Command extends Component {
 
   drop(ev) {
     ev.preventDefault();
-    var id = ev.dataTransfer.getData("signal").id;
-    this.addSignal({ id });
+    var signal = JSON.parse(ev.dataTransfer.getData("signal"));
+    this.addSignal(signal);
   }
 
   addSignal(signal){
+    var body = [
+        {
+          id: signal.id,
+          device: signal.device
+        }
+      ]
     fetch('api/command/' + this.props.id, {
-      method: 'PUT',
-      body: JSON.stringify([{
-        id: signal.id,
-        device: signal.device
-      }])
+      method: 'put',
+      headers: new Headers({
+        'Content-Type': 'application/json'
+      }),
+      body: JSON.stringify(body)
     })
     .then((response)=>{
       return response.json()
     })
     .then((json)=>{
-      console.log(json)
+      // console.log(json)
     })
     this.setState({signals: this.state.signals.concat(signal)})
   }

@@ -8,11 +8,11 @@ export default class Signal extends Component{
 
   drag(ev) {
     console.log(this.props)
-    ev.dataTransfer.setData("signal", {
+    ev.dataTransfer.setData("signal", JSON.stringify({
       id: this.props.id,
       command: this.props.command,
       device: this.props.device
-    });
+    }));
   }
 
   render(){
