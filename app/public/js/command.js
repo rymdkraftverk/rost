@@ -24,7 +24,9 @@ export default class Command extends Component {
     var body = [
         {
           id: signal.id,
-          device: signal.device
+          device: signal.device,
+          imageName: signal.imageName,
+          description: signal.description
         }
       ]
     fetch('api/command/' + this.props.id, {
@@ -40,7 +42,9 @@ export default class Command extends Component {
     .then((json)=>{
       // console.log(json)
     })
-    this.setState({signals: this.state.signals.concat(signal)})
+    this.setState({signals: this.state.signals.concat(signal)}, ()=>{
+      console.log("signals", this.state.signals)
+    })
   }
 
   render(){
@@ -75,7 +79,7 @@ export default class Command extends Component {
         <div style={optionsStyle}>
           {
             this.state.signals && this.state.signals.map((signal)=>{
-              return <Signal commandId={this.props.id} imageName={signal.imageName} description={signal.description} command={this.props.command} copyable={false} id={signal.id} key={signal.id} />
+              return <Signal commandId={this.props.id} imageName={signal.imageName} description={signal.description} command={this.props.command} copyable={false} id={signal.id} key={this.props.command + signal.id} />
             })
           }
           <div style={optionsIcon}>

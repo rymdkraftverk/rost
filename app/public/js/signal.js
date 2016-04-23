@@ -12,7 +12,9 @@ export default class Signal extends Component{
       id: this.props.id,
       command: this.props.command,
       device: this.props.device,
-      commandId: this.props.commandId || ""
+      commandId: this.props.commandId || "",
+      imageName: this.props.imageName,
+      description: this.props.description
     }));
   }
 
