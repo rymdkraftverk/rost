@@ -5,8 +5,12 @@ import fetch from 'isomorphic-fetch';
 export default class Command extends Component {
   constructor(props){
     super(props);
+    var checked = this.props.mode!=='strict';
+
     this.state = {
       command: this.props.command,
+      checked: checked,
+      mode: this.props.mode,
       signals: this.props.signals || []
     }
   }
@@ -73,7 +77,7 @@ export default class Command extends Component {
       "_rev": this.props.rev,
       "command": this.state.command,
       "type": "command",
-      "mode": "strict",
+      "mode": this.state.mode,
       "signals": this.state.signals
     }
     console.log(body)
@@ -99,6 +103,20 @@ export default class Command extends Component {
       window.app.refreshApplication();
       console.log(response);
     })
+  }
+
+  toggleStrictMode(e){
+    console.log("toggle", e.target.checked);
+    if (!e.target.checked){
+      this.setState({mode: "strict"}, ()=>{
+        this.updateCommand();
+      });
+    }
+    else {
+      this.setState({mode: ""}, ()=>{
+        this.updateCommand();
+      });
+    }
   }
 
   render(){
@@ -151,8 +169,8 @@ export default class Command extends Component {
 
           <div className="toggle">
 
-            <input id={id} className="cmn-toggle cmn-toggle-round-flat" type="checkbox" />
-            <label htmlFor={id} data-tip="test" className="block"></label>
+            <input id={id} onClick={this.toggleStrictMode.bind(this)} defaultChecked={this.state.checked} className="cmn-toggle cmn-toggle-round-flat" type="checkbox" />
+            <label htmlFor={id} data-tip={""} className="block"></label>
           </div>
           <div style={optionsIcon} onClick={this.deleteCommand.bind(this)}>
               <img src="../images/trash.png" width="24" height="22"/>

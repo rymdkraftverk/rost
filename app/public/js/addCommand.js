@@ -21,10 +21,12 @@ export default class AddCommand extends Component {
 	}
 
 	removeSignalFromCommand(signal){
-		fetch('/api/command/' + signal.commandId + '/' + signal.id,{
+		fetch('/api/command/' + signal.commandId + '/' + signal.device + '/' + signal.id,{
 			method: 'delete'
 		})
 		.then((response)=>{
+			window.app.deviceId = signal.device;
+			window.app.command = signal.command;
 			window.app.refreshApplication();
 		})
 	}
