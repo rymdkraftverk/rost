@@ -6,9 +6,8 @@ export default class Signal extends Component{
   }
 
   drag(ev) {
-    ev.dataTransfer.setData("text", ev.target.id);
+    ev.dataTransfer.setData("signal", this.props.id);
   }
-
 
   render(){
 
@@ -23,7 +22,7 @@ export default class Signal extends Component{
     }
 
     return(
-      <div style={option} draggable="true" ondragstart={this.drag}>
+      <div style={option} draggable="true" onDragStart={this.drag.bind(this)}>
         <img src="../images/light-on.png" draggable="false" width="24" height="22"/>
       </div>
     )

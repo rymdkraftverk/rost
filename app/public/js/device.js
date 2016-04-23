@@ -33,7 +33,7 @@ export default class Device extends Component {
         <div style={optionsStyle}>
         {
           this.props.signals.map((signal)=>{
-            return <Signal key={signal.id} color={"#accad3"}/>
+            return <Signal id={signal.id} key={signal.id} color={"#accad3"}/>
           })
         }
         </div>

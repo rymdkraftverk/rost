@@ -4,6 +4,23 @@ import Signal from './signal.js';
 export default class Command extends Component {
   constructor(props){
     super(props);
+    this.state = {
+      signals: this.props.signals || []
+    }
+  }
+
+  allowDrop(ev) {
+    ev.preventDefault();
+  }
+
+  drop(ev) {
+    ev.preventDefault();
+    var id = ev.dataTransfer.getData("signal");
+    this.addSignal({ id });
+  }
+
+  addSignal(signal){
+    this.setState({signals: this.state.signals.concat(signal)})
   }
 
   render(){
@@ -38,16 +55,14 @@ export default class Command extends Component {
       marginLeft: "10px"
     }
 
-    console.log(this.props);
-
     return (
-      <div style={style}>
+      <div style={style} onDrop={this.drop.bind(this)} onDragOver={this.allowDrop}>
         <div style={command}>
           {this.props.command}
         </div>
         <div style={optionsStyle}>
           {
-            this.props.signals && this.props.signals.map((signal)=>{
+            this.state.signals && this.state.signals.map((signal)=>{
               return <Signal key={signal.id} />
             })
           }
