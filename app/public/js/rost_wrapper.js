@@ -12,15 +12,6 @@ export default class RostWrapper extends Component {
     }
   }
 
-  refreshApplication(){
-    console.log("refresh everything");
-    this.setState({fetchCommands: true})
-  }
-
-  updateCommands(){
-
-  }
-
   render(){
     var style = {
       background: "white",
@@ -36,8 +27,8 @@ export default class RostWrapper extends Component {
         <div style={{width: "100%"}}>
           <Header />
           <div style={{padding: "10px"}}>
-            <Commands update={this.state.fetchCommands}/>
-            <AddCommand onDeleteSignal={this.refreshApplication.bind(this)}/>
+            <Commands/>
+            <AddCommand />
           </div>
         </div>
       </div>

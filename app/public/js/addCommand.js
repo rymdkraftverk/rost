@@ -25,7 +25,7 @@ export default class AddCommand extends Component {
 			method: 'delete'
 		})
 		.then((response)=>{
-			this.props.onDeleteSignal();
+			window.refreshApplication();
 		})
 	}
 

@@ -6,6 +6,7 @@ export default class Command extends Component {
   constructor(props){
     super(props);
     this.state = {
+      command: this.props.command,
       signals: this.props.signals || []
     }
   }
@@ -59,20 +60,35 @@ export default class Command extends Component {
     console.log(charCode)
     var ENTER = 13;
     if( charCode == ENTER ) {
-      this.updateCommand();
+      this.setState({command: event.target.value}, ()=>{
+        this.updateCommand();
+      })
     }
   }
 
   updateCommand(){
     console.log("update command");
-    // fetch()
-    // .then((repsonse)=>{
-    //
-    // })
+    fetch('api/command/' + this.props.id,{
+      method: 'put',
+      body: JSON.stringify({
+        "command": this.state.command,
+        "mode": "strict",
+        "signals": this.state.signals
+      })
+    })
+    .then((response)=>{
+      console.log(response)
+    })
   }
 
   deleteCommand(){
     console.log("delete command");
+    fetch('api/command/' + this.props.id, {
+      method: 'delete'
+    })
+    .then((response)=>{
+      console.log(response);
+    })
   }
 
   render(){
@@ -128,7 +144,7 @@ export default class Command extends Component {
             <input id={id} className="cmn-toggle cmn-toggle-round-flat" type="checkbox" />
             <label htmlFor={id} data-tip="test" className="block"></label>
           </div>
-          <div style={optionsIcon} onClick={this.deleteCommand}>
+          <div style={optionsIcon} onClick={this.deleteCommand.bind(this)}>
               <img src="../images/trash.png" width="24" height="22"/>
           </div>
         </div>
