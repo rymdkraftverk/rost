@@ -1,10 +1,16 @@
 const express = require('express')
 const router = express.Router()
 const commandDb = require('../../database/command')
+const request = require('request-promise')
+const config = require('../../config')
 
 router.post('/', (req, res) => {
 	const command = req.body
-	commandDb.upsert(command)
+	getSignature(command)
+	.then(signature => {
+		command.signature = signature
+		return commandDb.upsert(command)
+	})
 	.then(result => {
 		res.json(result)
 	})
@@ -34,5 +40,15 @@ router.get('/', (req, res) => {
 		res.status(400).json(err)
 	})
 })
+
+const getSignature = command => {
+	const options = {
+		method: 'POST',
+		uri: config.grasp.host + '/api/format_command',
+		body: { text: command },
+		json: true
+	}
+	return request(options)
+}
 
 module.exports = router
