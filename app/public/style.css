@@ -102,10 +102,10 @@ input.cmn-toggle-round-flat + label {
   transition: background 0.4s;
 }
 input.enabled + label {
-	background-color: #000 !important;
+	background-color: #47c493 !important;
 }
 input.enabled + label:after {
-	background-color: #000 !important;
+	background-color: #47c493 !important;
 }
 input.cmn-toggle-round-flat + label:before, input.cmn-toggle-round-flat + label:after {
   display: block;
