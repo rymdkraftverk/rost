@@ -36,6 +36,15 @@ const list = mode => {
 }
 
 const removeSignal = (commandId, signalId) => {
+const del = (id, rev) => {
+	return new Promise((resolve, reject) => {
+		db.destroy(id, rev, (err, body) => {
+			if(err) return reject(err)
+			return resolve(body)
+		})
+	})
+}
+
 	return new Promise((resolve, reject) => {
 		db.get(commandId, (err, body) => {
 			if(err) return reject(err)
@@ -63,5 +72,6 @@ module.exports = {
 	all,
 	addSignals,
 	list,
-	removeSignal
+	removeSignal,
+	del
 }
