@@ -7,12 +7,12 @@ import RostWrapper from './rost_wrapper'
 export default class App extends Component{
   constructor(){
     super();
-    window.refreshApplication = this.refreshApplication;
+    window.app = this;
   }
 
   refreshApplication(){
     console.log("refresh everything");
-    this.forceUpdate();
+    window.commands.refresh();
   }
 
   render(){

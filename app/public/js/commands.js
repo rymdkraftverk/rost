@@ -9,9 +9,14 @@ export default class Commands extends Component {
       commands: [],
       update: this.props.update
     }
+    window.commands = this;
   }
 
   componentDidMount(){
+    this.getAllCommands();
+  }
+
+  refresh(){
     this.getAllCommands();
   }
 
@@ -25,18 +30,12 @@ export default class Commands extends Component {
     })
   }
 
-  componentDidUpdate(){
-    if (this.state.update){
-      this.getAllCommands();
-    }
-  }
-
   render(){
     return(
       <div className="parent" style={{width: "100%"}}>
       {
         this.state.commands.map((command)=>{
-          return <Command id={command._id} key={command.command} signals={command.signals} command={command.command}/>
+          return <Command rev={command._rev} id={command._id} key={command.command} signals={command.signals} command={command.command}/>
         })
       }
       </div>

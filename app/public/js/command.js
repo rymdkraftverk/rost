@@ -83,10 +83,11 @@ export default class Command extends Component {
 
   deleteCommand(){
     console.log("delete command");
-    fetch('api/command/' + this.props.id, {
+    fetch('api/command/' + this.props.id + '/' + this.props.rev, {
       method: 'delete'
     })
     .then((response)=>{
+      window.app.refreshApplication();
       console.log(response);
     })
   }

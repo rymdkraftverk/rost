@@ -25,7 +25,7 @@ export default class AddCommand extends Component {
 			method: 'delete'
 		})
 		.then((response)=>{
-			window.refreshApplication();
+			window.app.refreshApplication();
 		})
 	}
 
@@ -41,6 +41,9 @@ export default class AddCommand extends Component {
 				"mode": "strict",
 				"signals": []
 			})
+		}).
+		then((response)=>{
+			window.app.refreshApplication();
 		})
 	}
 
