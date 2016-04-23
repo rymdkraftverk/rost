@@ -1,0 +1,10 @@
+---
+applications:
+- name: rost
+  memory: 512M
+  instances: 1
+  host: rost
+  domain: eu-gb.mybluemix.net
+  services:
+  - cloudant-rost
+  - s2t-rost
