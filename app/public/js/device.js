@@ -18,7 +18,8 @@ export default class Device extends Component {
       padding: "0 0 0 10px",
       marginTop: "5px",
       color: "#63919e",
-      fontSize: "24px"
+      fontSize: "24px",
+      textTransform: "capitalize"
     }
 
     var optionsStyle = {
