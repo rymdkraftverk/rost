@@ -28,17 +28,34 @@ const matchingFuzzyMock = () => {
 	return Promise.resolve([])
 }
 
+// not integrated
+// wating for axel
 const matchingFuzzy = voice => {
-	const options = {
-		method: 'GET',
-		uri: config.grasp.host + '/api/format_command',
-		body: { voice },
-		json: true
-	}
+	return commandDb.list()
+	.then(result => {
+		const commands = result
+		.filter(item => item.signature)
+		.map(item => {
+			return {
+				id: item._id,
+				signature: item.signature
+			}
+		})
 
-	return request(options)
-	.then(() => {
-		return [] //ignore result
+		const body = {
+			commands,
+			text: voice
+		}
+		console.log(body)
+		return []
+
+		const options = {
+			method: 'GET',
+			uri: config.grasp.host + '/api/format_command',
+			body,
+			json: true
+		}
+		return request(options)
 	})
 }
 
