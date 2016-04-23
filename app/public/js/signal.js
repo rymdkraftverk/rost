@@ -18,7 +18,7 @@ export default class Signal extends Component{
       background: this.props.color || "#f0c29c",
       color: "#fff",
       textAlign: "center",
-      lineHeight: "10px",
+      lineHeight: "5px",
       padding: "5px",
       borderRadius: "4px",
       marginLeft: "10px"

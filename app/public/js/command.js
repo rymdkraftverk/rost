@@ -42,17 +42,9 @@ export default class Command extends Component {
     var command = {
       padding: "5px"
     }
-    var option = {
-      background: "#f0c29c",
-      color: "#fff",
-      textAlign: "center",
-      lineHeight: "10px",
-      padding: "5px",
-      borderRadius: "4px",
-      marginLeft: "10px"
-    }
     var optionsIcon = {
-      marginLeft: "10px"
+      marginLeft: "10px",
+      marginTop: "6px"
     }
 
     return (
@@ -67,7 +59,7 @@ export default class Command extends Component {
             })
           }
           <div style={optionsIcon}>
-            <img src="#"/>
+            <img src="../images/settings.png" width="24" height="22"/>
           </div>
         </div>
       </div>
