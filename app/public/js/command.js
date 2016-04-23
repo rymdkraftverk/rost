@@ -52,7 +52,7 @@ export default class Command extends Component {
             })
           }
           <div style={optionsIcon}>
-            <img src="#" />
+            <img src="#"/>
           </div>
         </div>
       </div>
