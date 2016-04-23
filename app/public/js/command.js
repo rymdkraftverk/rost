@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import Signal from './signal.js';
 import fetch from 'isomorphic-fetch';
+import classnames from 'classnames';
 
 export default class Command extends Component {
   constructor(props){
@@ -147,7 +148,13 @@ export default class Command extends Component {
       marginTop: "6px",
       cursor: "pointer"
     }
+    var toggleStyle={
+      background: "green"
+    }
     var id = "cmn-toggle-" + this.props.id;
+    var toggleStyle = classnames("cmn-toggle", "cmn-toggle-round-flat", {
+      'enabled': this.state.checked
+    })
     return (
         <div className="test" style={style} onDrop={this.drop.bind(this)} onDragOver={this.allowDrop}>
           <input style={command} defaultValue={this.props.command} onKeyPress={this.onKeyPress.bind(this)}/>
@@ -169,7 +176,7 @@ export default class Command extends Component {
 
           <div className="toggle">
 
-            <input id={id} onClick={this.toggleStrictMode.bind(this)} defaultChecked={this.state.checked} className="cmn-toggle cmn-toggle-round-flat" type="checkbox" />
+            <input id={id} onClick={this.toggleStrictMode.bind(this)} defaultChecked={this.state.checked} className={toggleStyle} type="checkbox" />
             <label htmlFor={id} data-tip={""} className="block"></label>
           </div>
           <div style={optionsIcon} onClick={this.deleteCommand.bind(this)}>
