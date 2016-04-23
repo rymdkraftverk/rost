@@ -37,7 +37,7 @@ export default class Command extends Component {
           description: signal.description
         }
       ]
-    fetch('api/command/' + this.props.id, {
+    fetch('api/command/' + this.props.id + '/signal', {
       method: 'put',
       headers: new Headers({
         'Content-Type': 'application/json'
@@ -61,20 +61,29 @@ export default class Command extends Component {
     var ENTER = 13;
     if( charCode == ENTER ) {
       this.setState({command: event.target.value}, ()=>{
+        console.log(this.state.command)
         this.updateCommand();
       })
     }
   }
 
   updateCommand(){
+    var body = {
+      "_id": this.props.id,
+      "_rev": this.props.rev,
+      "command": this.state.command,
+      "type": "command",
+      "mode": "strict",
+      "signals": this.state.signals
+    }
+    console.log(body)
     console.log("update command");
-    fetch('api/command/' + this.props.id,{
+    fetch('api/command',{
       method: 'put',
-      body: JSON.stringify({
-        "command": this.state.command,
-        "mode": "strict",
-        "signals": this.state.signals
-      })
+      headers: new Headers({
+        'Content-Type': 'application/json'
+      }),
+      body: JSON.stringify(body)
     })
     .then((response)=>{
       console.log(response)
