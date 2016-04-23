@@ -26,6 +26,7 @@ ul li {
 	-moz-box-shadow: 0 5px 15px rgba(233,160,101,.65);
 	-webkit-box-shadow: 0 5px 15px rgba(233,160,101,.65);
 	box-shadow: 0 5px 15px rgba(233,160,101,.65);
+	cursor: pointer;
 }
 
 input:focus {

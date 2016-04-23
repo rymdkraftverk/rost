@@ -25,6 +25,13 @@ export default class AddCommand extends Component {
 		})
 	}
 
+	addNewCommand(){
+		console.log("add new command");
+		// fetch('/api/command', {
+		// 	method: 'post'
+		// })
+	}
+
 	render(){
 		var style = {
 			width: "45px",
@@ -41,7 +48,7 @@ export default class AddCommand extends Component {
 			float: "right"
 		}
 		return(
-			<div onDrop={this.drop.bind(this)} onDragOver={this.allowDrop}>
+			<div onClick={this.addNewCommand} onDrop={this.drop.bind(this)} onDragOver={this.allowDrop}>
 				<div className="addCommand">+</div>
 			</div>
 		)
