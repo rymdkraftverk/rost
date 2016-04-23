@@ -17,7 +17,6 @@ export default class Commands extends Component {
     })
     .then((json)=>{
       this.setState({commands: json})
-      console.log(this.state);
     })
   }
 
@@ -26,7 +25,7 @@ export default class Commands extends Component {
       <div style={{width: "100%"}}>
       {
         this.state.commands.map((command)=>{
-          return <Command key={command.command} signals={command.signals} command={command.command}/>
+          return <Command id={command._id} key={command.command} signals={command.signals} command={command.command}/>
         })
       }
       </div>

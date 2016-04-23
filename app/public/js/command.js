@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import Signal from './signal.js';
+import fetch from 'isomorphic-fetch';
 
 export default class Command extends Component {
   constructor(props){
@@ -20,6 +21,19 @@ export default class Command extends Component {
   }
 
   addSignal(signal){
+    fetch('api/command/' + this.props.id, {
+      method: 'PUT',
+      body: JSON.stringify([{
+        id: signal.id,
+        device: signal.device
+      }])
+    })
+    .then((response)=>{
+      return response.json()
+    })
+    .then((json)=>{
+      console.log(json)
+    })
     this.setState({signals: this.state.signals.concat(signal)})
   }
 

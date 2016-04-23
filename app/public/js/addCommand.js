@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import fetch from 'isomorphic-fetch';
 
 export default class AddCommand extends Component {
 	constructor(props){
@@ -15,8 +16,13 @@ export default class AddCommand extends Component {
 		this.removeSignalFromCommand(signal);
 	}
 
-	removeSignalFromCommand(){
-		this.props.onDeleteSignal();
+	removeSignalFromCommand(signal){
+		// fetch('/api/command' + signal.command + '/' + signal.id,{
+		// 	method: 'DELETE'
+		// })
+		// .then((response)=>{
+		// 	this.props.onDeleteSignal();
+		// })
 	}
 
 	render(){
