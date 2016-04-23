@@ -23,6 +23,7 @@ const all = () => {
 	})
 }
 
+// ugly
 const list = mode => {
 	return new Promise((resolve, reject) => {
 		const view = mode === 'strict' ? 'all_commands_strict': 'all_commands'
