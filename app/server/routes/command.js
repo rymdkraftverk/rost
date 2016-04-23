@@ -44,6 +44,17 @@ router.delete('/:id/:deviceId/:signalId', (req, res) => {
 	})
 })
 
+router.put('/', (req, res) => {
+	const command = req.body
+	commandDb.upsert(command)
+	.then(result => {
+		res.json(result)
+	})
+	.catch(err => {
+		res.status(400).json(err)
+	})
+})
+
 router.put('/:id/signal', (req, res) => {
 	const id = req.params.id
 	const signals = req.body
