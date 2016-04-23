@@ -23,6 +23,17 @@ const all = () => {
 	})
 }
 
+const list = mode => {
+	return new Promise((resolve, reject) => {
+		const view = mode === 'strict' ? 'all_commands_strict': 'all_commands'
+		db.view('default', view, (err, body) => {
+			if(err) return reject(err)
+			const items = body.rows.map(item => item.value.command)
+			return resolve(items)
+		})
+	})
+}
+
 const upsert = item => {
 	item.type = TYPE
 	return new Promise((resolve, reject) => {
@@ -36,5 +47,6 @@ const upsert = item => {
 module.exports = {
 	upsert,
 	all,
-	addSignals
+	addSignals,
+	list
 }
