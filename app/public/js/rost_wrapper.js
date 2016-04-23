@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import Devices from './devices';
 import Commands from './commands';
 import Header from './header';
+import AddCommand from './addCommand';
 
 export default class RostWrapper extends Component {
   constructor(props){
@@ -24,6 +25,7 @@ export default class RostWrapper extends Component {
           <Header />
           <div style={{padding: "10px"}}>
             <Commands />
+            <AddCommand />
           </div>
         </div>
       </div>
