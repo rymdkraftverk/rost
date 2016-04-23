@@ -27,3 +27,7 @@ ul li {
 	-webkit-box-shadow: 0 5px 15px rgba(233,160,101,.65);
 	box-shadow: 0 5px 15px rgba(233,160,101,.65);
 }
+
+input:focus {
+	outline: none;
+}

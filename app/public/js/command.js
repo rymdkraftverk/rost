@@ -88,7 +88,11 @@ export default class Command extends Component {
       justifyContent: "space-between"
     };
     var command = {
-      padding: "5px"
+      padding: "5px",
+      background: "#f7ece3",
+      color: "#d9823c",
+      fontSize: "18px",
+      border: "none"
     }
     var optionsIcon = {
       marginLeft: "10px",
