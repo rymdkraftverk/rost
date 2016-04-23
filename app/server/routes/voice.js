@@ -2,6 +2,7 @@ const express = require('express')
 const router = express.Router()
 const commandDb = require('../../database/command')
 const request = require('request-promise')
+const iotf = require('../../iotf')
 
 router.post('/', (req, res) => {
 	const voice = req.body.voice
@@ -14,6 +15,7 @@ router.post('/', (req, res) => {
 			const signals = commandSignals(current)
 			return signals.concat(prev)
 		}, [])
+		iotf.publish(signals)
 		res.json(signals)
 	})
 	.catch(err => {
@@ -28,7 +30,11 @@ const matchingFuzzy = voice => {
 		body: { voice },
 		json: true
 	}
+
 	return request(options)
+	.then(() => {
+		return [] //ignore result
+	})
 }
 
 const matchingStrict = voice => {
