@@ -7,6 +7,7 @@ export default class Signal extends Component{
   }
 
   drag(ev) {
+    window.addCommand.setState({addMode: false});
     console.log(this.props)
     ev.dataTransfer.setData("signal", JSON.stringify({
       id: this.props.id,
@@ -16,6 +17,10 @@ export default class Signal extends Component{
       imageName: this.props.imageName,
       description: this.props.description
     }));
+  }
+
+  onDragEnd(){
+    window.addCommand.setState({addMode: true});
   }
 
   render(){
@@ -33,7 +38,7 @@ export default class Signal extends Component{
     var imageDescription = this.props.description;
 
     return(
-      <div style={option} draggable="true" onDragStart={this.drag.bind(this)}>
+      <div style={option} draggable="true" onDragStart={this.drag.bind(this)} onDragEnd={this.onDragEnd}>
       <ReactTooltip />
         <img src={imageLocation} data-tip={imageDescription} draggable="false" width="24" height="22"/>
       </div>

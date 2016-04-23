@@ -4,6 +4,10 @@ import fetch from 'isomorphic-fetch';
 export default class AddCommand extends Component {
 	constructor(props){
 		super(props);
+		window.addCommand = this;
+		this.state = {
+			addMode: true
+		}
 	}
 
 	allowDrop(ev) {
@@ -49,7 +53,13 @@ export default class AddCommand extends Component {
 		}
 		return(
 			<div onClick={this.addNewCommand} onDrop={this.drop.bind(this)} onDragOver={this.allowDrop}>
-				<div className="addCommand">+</div>
+				{
+					this.state.addMode?<div className="addCommand">+</div>:
+					<div className="addCommand" style={{background: "white", "pointer": "none"}}>
+						<img style={{"marginTop": "7px"}} src="../images/trash.png" width="34" height="32"/>
+					</div>
+				}
+
 			</div>
 		)
 	}
