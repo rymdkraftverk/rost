@@ -22,8 +22,8 @@ export default class Devices extends Component {
   }
 
   render(){
-    var style={
-      paddingTop: "20px",
+    var style = {
+      padding: "5px",
       borderRight: "2px solid #ebf2f4",
       width: 400,
       paddingBottom: "50px"

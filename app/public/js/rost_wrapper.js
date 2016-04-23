@@ -12,7 +12,7 @@ export default class RostWrapper extends Component {
     var style = {
       background: "white",
       margin: "50px auto",
-      width: 1000,
+      width: 1100,
       borderRadius: "4px",
       overflow: "hidden",
       display: "flex"
@@ -22,7 +22,9 @@ export default class RostWrapper extends Component {
         <Devices />
         <div style={{width: "100%"}}>
           <Header />
-          <Commands />
+          <div style={{padding: "10px"}}>
+            <Commands />
+          </div>
         </div>
       </div>
     )

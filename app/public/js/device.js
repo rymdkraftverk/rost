@@ -7,21 +7,24 @@ export default class Device extends Component {
   }
   render(){
     var style = {
-      width: 300,
-      height: 120,
-      background: "lightblue",
+      padding: "10px",
+      background: "#d1e9f0",
       color: "blue",
       margin: "10px",
       borderRadius: "4px"
     };
 
     var header = {
-      padding: "10px"
+      padding: "0 0 0 10px",
+      marginTop: "5px",
+      color: "#63919e",
+      fontSize: "24px"
     }
 
     var optionsStyle = {
       display: "flex",
-      justifyContent: "flex-start"
+      justifyContent: "flex-start",
+      marginBottom: "5px"
     };
 
     return(
@@ -30,7 +33,7 @@ export default class Device extends Component {
         <div style={optionsStyle}>
         {
           this.props.signals.map((signal)=>{
-            return <Signal key={signal.id} />
+            return <Signal key={signal.id} color={"#accad3"}/>
           })
         }
         </div>
