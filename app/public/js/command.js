@@ -75,7 +75,7 @@ export default class Command extends Component {
         <div style={optionsStyle}>
           {
             this.state.signals && this.state.signals.map((signal)=>{
-              return <Signal imageName={signal.imageName} description={signal.description} command={this.props.command} copyable={false} id={signal.id} key={signal.id} />
+              return <Signal commandId={this.props.id} imageName={signal.imageName} description={signal.description} command={this.props.command} copyable={false} id={signal.id} key={signal.id} />
             })
           }
           <div style={optionsIcon}>

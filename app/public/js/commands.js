@@ -6,11 +6,16 @@ export default class Commands extends Component {
   constructor(props){
     super(props);
     this.state = {
-      commands: []
+      commands: [],
+      update: this.props.update
     }
   }
 
   componentDidMount(){
+    this.getAllCommands();
+  }
+
+  getAllCommands(){
     fetch('api/command')
     .then((response)=>{
       return response.json()
@@ -18,6 +23,12 @@ export default class Commands extends Component {
     .then((json)=>{
       this.setState({commands: json})
     })
+  }
+
+  componentDidUpdate(){
+    if (this.state.update){
+      this.getAllCommands();
+    }
   }
 
   render(){

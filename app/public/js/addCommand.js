@@ -12,17 +12,17 @@ export default class AddCommand extends Component {
 
 	drop(ev) {
 		ev.preventDefault();
-		var signal = ev.dataTransfer.getData("signal");
+		var signal = JSON.parse(ev.dataTransfer.getData("signal"));
 		this.removeSignalFromCommand(signal);
 	}
 
 	removeSignalFromCommand(signal){
-		// fetch('/api/command' + signal.command + '/' + signal.id,{
-		// 	method: 'DELETE'
-		// })
-		// .then((response)=>{
-		// 	this.props.onDeleteSignal();
-		// })
+		fetch('/api/command/' + signal.commandId + '/' + signal.id,{
+			method: 'delete'
+		})
+		.then((response)=>{
+			this.props.onDeleteSignal();
+		})
 	}
 
 	render(){

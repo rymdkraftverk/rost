@@ -11,7 +11,8 @@ export default class Signal extends Component{
     ev.dataTransfer.setData("signal", JSON.stringify({
       id: this.props.id,
       command: this.props.command,
-      device: this.props.device
+      device: this.props.device,
+      commandId: this.props.commandId || ""
     }));
   }
 

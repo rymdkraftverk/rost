@@ -21,6 +21,7 @@
     "babelify": "^7.2.0",
     "isomorphic-fetch": "^2.2.1",
     "react": "^15.0.1",
-    "react-dom": "^15.0.1"
+    "react-dom": "^15.0.1",
+    "react-tooltip": "^1.2.1"
   }
 }

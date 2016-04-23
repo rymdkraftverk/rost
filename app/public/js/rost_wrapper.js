@@ -7,10 +7,18 @@ import AddCommand from './addCommand';
 export default class RostWrapper extends Component {
   constructor(props){
     super(props);
+    this.state = {
+      fetchCommands: false
+    }
   }
 
   refreshApplication(){
-    this.forceUpdate();
+    console.log("refresh everything");
+    this.setState({fetchCommands: true})
+  }
+
+  updateCommands(){
+
   }
 
   render(){
@@ -28,7 +36,7 @@ export default class RostWrapper extends Component {
         <div style={{width: "100%"}}>
           <Header />
           <div style={{padding: "10px"}}>
-            <Commands />
+            <Commands update={this.state.fetchCommands}/>
             <AddCommand onDeleteSignal={this.refreshApplication.bind(this)}/>
           </div>
         </div>
