@@ -8,8 +8,14 @@ router.post('/', (req, res) => {
 
 	commandDb.list('strict')
 	.then(result => {
-		const matches = util.matches(voice, result)
-		res.json(matches)
+		const commands = util.matchingCommands(voice, result)
+		const signals = commands
+		.map(item => item.signals)
+		.reduce((prev, current) => {
+			return prev.concat(current)
+		}, [])
+
+		res.json(signals)
 	})
 	.catch(err => {
 		res.status(400).json(err)

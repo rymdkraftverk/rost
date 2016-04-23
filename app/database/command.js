@@ -6,7 +6,7 @@ const addSignals = (commandId, signals) => {
 		db.get(commandId, (err, body) => {
 			if(err) return reject(err)
 
-			const currentSignals = body.signals
+			const currentSignals = body.signals || []
 			body.signals = currentSignals.concat(signals)
 			return resolve(upsert(body))
 		})
@@ -28,7 +28,7 @@ const list = mode => {
 		const view = mode === 'strict' ? 'all_commands_strict': 'all_commands'
 		db.view('default', view, (err, body) => {
 			if(err) return reject(err)
-			const items = body.rows.map(item => item.value.command)
+			const items = body.rows.map(item => item.value)
 			return resolve(items)
 		})
 	})

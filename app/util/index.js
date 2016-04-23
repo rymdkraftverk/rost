@@ -1,9 +1,9 @@
-const matches = (string, list) => {
+const matchingCommands = (string, list) => {
 	return list.filter(el => {
-		return string.includes(el)
+		return string.includes(el.command)
 	})
 }
 
 module.exports = {
-	matches
+	matchingCommands
 }
