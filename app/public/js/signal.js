@@ -30,7 +30,7 @@ export default class Signal extends Component{
     return(
       <div style={option} draggable="true" onDragStart={this.drag.bind(this)}>
       <ReactTooltip />
-        <img src="../images/fan-on.png" data-tip="hello world" draggable="false" width="24" height="22"/>
+        <img src="../images/large-glass.png" data-tip="hello world" draggable="false" width="24" height="22"/>
       </div>
     )
   }
