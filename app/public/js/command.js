@@ -71,6 +71,10 @@ export default class Command extends Component {
     // })
   }
 
+  deleteCommand(){
+    console.log("delete command");
+  }
+
   render(){
     var style = {
       background: "#f7ece3",
@@ -96,7 +100,8 @@ export default class Command extends Component {
     }
     var optionsIcon = {
       marginLeft: "10px",
-      marginTop: "6px"
+      marginTop: "6px",
+      cursor: "pointer"
     }
 
     return (
@@ -117,7 +122,7 @@ export default class Command extends Component {
               key={signal.device + signal.id} />
             })
           }
-          <div style={optionsIcon}>
+          <div onClick={this.deleteCommand} style={optionsIcon}>
             <img src="../images/trash.png" width="24" height="22"/>
           </div>
         </div>
