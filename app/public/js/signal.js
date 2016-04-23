@@ -7,7 +7,7 @@ export default class Signal extends Component{
   render(){
 
     var option = {
-      background: "#f0c29c",
+      background: this.props.color || "#f0c29c",
       color: "#fff",
       textAlign: "center",
       lineHeight: "10px",
