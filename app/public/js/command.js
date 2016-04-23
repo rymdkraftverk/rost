@@ -103,7 +103,7 @@ export default class Command extends Component {
       marginTop: "6px",
       cursor: "pointer"
     }
-
+    var id = "cmn-toggle-" + this.props.id;
     return (
       <div style={style} onDrop={this.drop.bind(this)} onDragOver={this.allowDrop}>
         <input style={command} defaultValue={this.props.command} onKeyPress={this.onKeyPress.bind(this)}/>
@@ -124,8 +124,9 @@ export default class Command extends Component {
           }
 
           <div className="toggle">
-            <input id="cmn-toggle-4" className="cmn-toggle cmn-toggle-round-flat" type="checkbox" />
-            <label htmlFor="cmn-toggle-4" data-tip="test" className="block"></label>
+
+            <input id={id} className="cmn-toggle cmn-toggle-round-flat" type="checkbox" />
+            <label htmlFor={id} data-tip="test" className="block"></label>
           </div>
           <div style={optionsIcon} onClick={this.deleteCommand}>
               <img src="../images/trash.png" width="24" height="22"/>
