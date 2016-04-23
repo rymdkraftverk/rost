@@ -4,6 +4,21 @@ export default class AddCommand extends Component {
 	constructor(props){
 		super(props);
 	}
+
+	allowDrop(ev) {
+		ev.preventDefault();
+	}
+
+	drop(ev) {
+		ev.preventDefault();
+		var signal = ev.dataTransfer.getData("signal");
+		this.removeSignalFromCommand(signal);
+	}
+
+	removeSignalFromCommand(){
+		this.props.onDeleteSignal();
+	}
+
 	render(){
 		var style = {
 			width: "45px",
@@ -20,7 +35,7 @@ export default class AddCommand extends Component {
 			float: "right"
 		}
 		return(
-			<div>
+			<div onDrop={this.drop.bind(this)} onDragOver={this.allowDrop}>
 				<div className="addCommand">+</div>
 			</div>
 		)

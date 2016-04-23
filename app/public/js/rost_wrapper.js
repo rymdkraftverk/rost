@@ -9,6 +9,10 @@ export default class RostWrapper extends Component {
     super(props);
   }
 
+  refreshApplication(){
+    this.forceUpdate();
+  }
+
   render(){
     var style = {
       background: "white",
@@ -25,7 +29,7 @@ export default class RostWrapper extends Component {
           <Header />
           <div style={{padding: "10px"}}>
             <Commands />
-            <AddCommand />
+            <AddCommand onDeleteSignal={this.refreshApplication.bind(this)}/>
           </div>
         </div>
       </div>

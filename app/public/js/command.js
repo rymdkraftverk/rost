@@ -15,7 +15,7 @@ export default class Command extends Component {
 
   drop(ev) {
     ev.preventDefault();
-    var id = ev.dataTransfer.getData("signal");
+    var id = ev.dataTransfer.getData("signal").id;
     this.addSignal({ id });
   }
 
@@ -63,7 +63,7 @@ export default class Command extends Component {
         <div style={optionsStyle}>
           {
             this.state.signals && this.state.signals.map((signal)=>{
-              return <Signal key={signal.id} />
+              return <Signal command={this.props.command} copyable={false} id={signal.id} key={signal.id} />
             })
           }
           <div style={optionsIcon}>
