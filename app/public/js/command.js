@@ -109,12 +109,12 @@ export default class Command extends Component {
   toggleStrictMode(e){
     console.log("toggle", e.target.checked);
     if (!e.target.checked){
-      this.setState({mode: "strict"}, ()=>{
+      this.setState({mode: "strict", checked: e.target.checked}, ()=>{
         this.updateCommand();
       });
     }
     else {
-      this.setState({mode: ""}, ()=>{
+      this.setState({mode: "", checked: e.target.checked}, ()=>{
         this.updateCommand();
       });
     }
