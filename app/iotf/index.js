@@ -9,7 +9,7 @@ if(!creds)
 
 const options = {
 	'org': creds.org,
-	'id': appEnv.name || 'rost',
+	'id': 'rost' + appEnv.isLocal ? '-local': '',
 	'auth-key': creds.apiKey,
 	'auth-token': creds.apiToken
 }
