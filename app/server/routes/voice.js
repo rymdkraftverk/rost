@@ -4,7 +4,7 @@ const commandDb = require('../../database/command')
 
 router.post('/', (req, res) => {
 	const voice = req.body.voice
-	matchingSignals(voice)
+	matchingStrict(voice)
 	.then(signals => {
 		res.json(signals)
 	})
@@ -13,7 +13,7 @@ router.post('/', (req, res) => {
 	})
 })
 
-const matchingSignals = voice => {
+const matchingStrict = voice => {
 	return commandDb.list('strict')
 	.then(result => {
 		const commands = matchingCommands(voice, result)
