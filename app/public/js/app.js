@@ -9,18 +9,14 @@ export default class App extends Component{
     super();
   }
   render(){
-    var style={
-      height: 1000
-    }
     return(
-      <div style={style}>
+      <div>
         <RostWrapper/>
         <p className="slogan" style={{textAlign: "center"}}>Powered by <u>Rymdkraftverk</u></p>
       </div>
     )
   }
 }
-
 ReactDOM.render(
   <App />, document.getElementById('app')
 )
