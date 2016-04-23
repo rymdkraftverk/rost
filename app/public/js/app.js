@@ -15,6 +15,7 @@ export default class App extends Component{
     return(
       <div style={style}>
         <RostWrapper/>
+        <p className="slogan" style={{textAlign: "center"}}>Powered by <u>Rymdkraftverk</u></p>
       </div>
     )
   }
