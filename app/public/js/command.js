@@ -17,7 +17,9 @@ export default class Command extends Component {
   drop(ev) {
     ev.preventDefault();
     var signal = JSON.parse(ev.dataTransfer.getData("signal"));
+
     var conflicts = this.state.signals.filter((s)=>{
+      console.log("signal", signal, "s", s)
       return s.id === signal.id && s.device === signal.device
     })
     if (conflicts.length === 0){
@@ -84,7 +86,15 @@ export default class Command extends Component {
         <div style={optionsStyle}>
           {
             this.state.signals && this.state.signals.map((signal)=>{
-              return <Signal commandId={this.props.id} imageName={signal.imageName} description={signal.description} command={this.props.command} copyable={false} id={signal.id} key={signal.device + signal.id} />
+              return <Signal
+              device={signal.device}
+              commandId={this.props.id}
+              imageName={signal.imageName}
+              description={signal.description}
+              command={this.props.command}
+              copyable={false}
+              id={signal.id}
+              key={signal.device + signal.id} />
             })
           }
           <div style={optionsIcon}>
