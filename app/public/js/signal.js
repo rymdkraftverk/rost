@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import ReactTooltip from 'react-tooltip';
 
 export default class Signal extends Component{
   constructor(props){
@@ -28,7 +29,8 @@ export default class Signal extends Component{
 
     return(
       <div style={option} draggable="true" onDragStart={this.drag.bind(this)}>
-        <img src="../images/light-on.png" draggable="false" width="24" height="22"/>
+      <ReactTooltip />
+        <img src="../images/light-on.png" data-tip="hello world" draggable="false" width="24" height="22"/>
       </div>
     )
   }
