@@ -37,6 +37,7 @@ client.on('close', error => {
 })
 
 const publish = signals => {
+	console.log('publishing signals:\n', signals)
 	signals.forEach(item => {
 		const statusMsg  = JSON.stringify({status: 'success'})
 		client.publishDeviceCommand(config.deviceType, item.device, item.id, 'json', statusMsg)
