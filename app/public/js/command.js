@@ -138,7 +138,7 @@ export default class Command extends Component {
                 key={signal.device + signal.id} />
               })
             }
-            
+
           <div className="toggle">
 
             <input id={id} className="cmn-toggle cmn-toggle-round-flat" type="checkbox" />
@@ -148,6 +148,7 @@ export default class Command extends Component {
               <img src="../images/trash.png" width="24" height="22"/>
           </div>
         </div>
+      </div>
     )
   }
 }
