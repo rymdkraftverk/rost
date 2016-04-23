@@ -75,6 +75,12 @@ const commandSignals = commands => {
 	.reduce((prev, current) => {
 		return prev.concat(current)
 	}, [])
+	.map(item => {
+		return {
+			id: item.id,
+			device: item.device
+		}
+	})
 
 	return signals
 }
