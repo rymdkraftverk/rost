@@ -7,21 +7,32 @@ const config = require('../../config')
 
 router.post('/', (req, res) => {
 	const voice = req.body.voice
-	const fuzzy = matchingFuzzyMock(voice)
-	const strict = matchingStrict(voice)
-
-	Promise.all([fuzzy, strict])
-	.then(results => {
-		const signals = results.reduce((prev, current) => {
-			const signals = commandSignals(current)
-			return signals.concat(prev)
-		}, [])
-		iotf.publish(signals)
-		res.json(signals)
-	})
-	.catch(err => {
-		res.status(400).json(err)
-	})
+	const fuzzyMode = req.body.fuzzy
+	if(fuzzyMode){
+		matchingFuzzy(voice)
+		.then(command => {
+			if(command){
+				const signals = commandSignals([command])
+				iotf.publish(signals)
+				return res.json(signals)
+			}
+			return res.json({msg: 'no match'})
+		})
+		.catch(err => {
+			return res.status(400).json(err)
+		})
+	}
+	else {
+		matchingStrict(voice)
+		.then(result => {
+			const signals = commandSignals(result)
+			iotf.publish(signals)
+			res.json(signals)
+		})
+		.catch(err => {
+			return res.status(400).json(err)
+		})
+	}
 })
 
 const matchingFuzzyMock = () => {
@@ -34,24 +45,17 @@ const matchingFuzzy = voice => {
 	return commandDb.list()
 	.then(result => {
 		const commands = result
-		.filter(item => item.signature)
-		.map(item => {
-			return {
-				id: item._id,
-				signature: item.signature
-			}
-		})
+		.filter(item => item.signature && item.mode !== 'strict')
 
 		const body = {
 			commands,
 			text: voice
 		}
 		console.log(body)
-		return []
 
 		const options = {
-			method: 'GET',
-			uri: config.grasp.host + '/api/format_command',
+			method: 'POST',
+			uri: config.grasp.host + '/api/match_commands',
 			body,
 			json: true
 		}
