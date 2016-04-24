@@ -127,6 +127,10 @@ export default class Command extends Component {
     }
   }
 
+  click(e){
+    console.log(e.target.select());
+  }
+
   render(){
     var style = {
       color: "#d9823c",
@@ -167,7 +171,7 @@ export default class Command extends Component {
 
     return (
         <div style={style} className={commandStyle} onDragLeave={this.onDragLeave.bind(this)} onDrop={this.drop.bind(this)} onDragOver={this.allowDrop.bind(this)}>
-          <input style={command} className={commandStyle} defaultValue={this.props.command} onKeyPress={this.onKeyPress.bind(this)}/>
+          <input style={command} onClick={this.click} className={commandStyle} defaultValue={this.props.command} onKeyPress={this.onKeyPress.bind(this)}/>
 
           <div style={optionsStyle}>
             {
