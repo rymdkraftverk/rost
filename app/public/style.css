@@ -150,7 +150,7 @@ input.cmn-toggle-round-flat:checked + label:after {
 }
 
 .isHovered {
-	background: red !important;
+	background: #f0c29c !important;
 }
 
 .command {
