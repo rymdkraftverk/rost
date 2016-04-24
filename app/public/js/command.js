@@ -10,6 +10,7 @@ export default class Command extends Component {
 
     this.state = {
       command: this.props.command,
+      hovered: false,
       checked: checked,
       mode: this.props.mode,
       signals: this.props.signals || []
@@ -18,10 +19,20 @@ export default class Command extends Component {
 
   allowDrop(ev) {
     ev.preventDefault();
+    this.setState({hovered: true}, ()=>{
+      console.log(this.state.hovered)
+    });
+  }
+
+  onDragLeave(){
+    this.setState({hovered: false}, ()=>{
+      console.log(this.state.hovered)
+    });
   }
 
   drop(ev) {
     ev.preventDefault();
+    this.setState({hovered: false})
     var signal = JSON.parse(ev.dataTransfer.getData("signal"));
 
     var conflicts = this.state.signals.filter((s)=>{
@@ -122,7 +133,6 @@ export default class Command extends Component {
 
   render(){
     var style = {
-      background: "#f7ece3",
       color: "#d9823c",
       fontSize: "18px",
       display: "flex",
@@ -138,7 +148,6 @@ export default class Command extends Component {
     };
     var command = {
       padding: "5px",
-      background: "#f7ece3",
       textTransform: "capitalize",
       color: "#d9823c",
       fontSize: "18px",
@@ -156,9 +165,13 @@ export default class Command extends Component {
     var toggleStyle = classnames("cmn-toggle", "cmn-toggle-round-flat", {
       'enabled': this.state.checked
     })
+    var commandStyle = classnames("command", {
+      "isHovered": this.state.hovered
+    })
+
     return (
-        <div style={style} onDrop={this.drop.bind(this)} onDragOver={this.allowDrop}>
-          <input style={command} defaultValue={this.props.command} onKeyPress={this.onKeyPress.bind(this)}/>
+        <div style={style} className={commandStyle} onDragLeave={this.onDragLeave.bind(this)} onDrop={this.drop.bind(this)} onDragOver={this.allowDrop.bind(this)}>
+          <input style={command} className={commandStyle} defaultValue={this.props.command} onKeyPress={this.onKeyPress.bind(this)}/>
 
           <div style={optionsStyle}>
             {

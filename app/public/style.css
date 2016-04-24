@@ -148,6 +148,15 @@ input.cmn-toggle-round-flat + label:after {
 input.cmn-toggle-round-flat:checked + label:after {
   margin-left: 13px;
 }
+
+.isHovered {
+	background: red !important;
+}
+
+.command {
+	background: #f7ece3;
+}
+
 /*.parent:hover > .test {
 	opacity: 0.4;
 }
