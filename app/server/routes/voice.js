@@ -63,7 +63,7 @@ const matchingStrict = voice => {
 	return commandDb.list('strict')
 	.then(result => {
 		return result.filter(el => {
-			return voice.includes(el.command)
+			return voice.toLowerCase().includes(el.command.toLowerCase())
 		})
 	})
 }
