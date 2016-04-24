@@ -19,15 +19,11 @@ export default class Command extends Component {
 
   allowDrop(ev) {
     ev.preventDefault();
-    this.setState({hovered: true}, ()=>{
-      console.log(this.state.hovered)
-    });
+    this.setState({hovered: true});
   }
 
   onDragLeave(){
-    this.setState({hovered: false}, ()=>{
-      console.log(this.state.hovered)
-    });
+    this.setState({hovered: false});
   }
 
   drop(ev) {
